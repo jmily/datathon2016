@@ -1,12 +1,19 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: bryan
+ * Date: 26/04/2016
+ * Time: 7:02 PM
+ */
 
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class IndexAction extends Controller
 {
     /**
      * @Route("/", name="homepage")
@@ -14,8 +21,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ]);
+        return $this->render('index.html.twig');
     }
+
 }
