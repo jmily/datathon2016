@@ -14,6 +14,7 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     {#<!--[if lt IE 9]>#}
@@ -112,7 +113,8 @@
 
 {% block javascripts %}
     <!-- jQuery -->
-    <script src="{{ asset('js/jquery.js') }}"></script>
+    {#<script src="{{ asset('js/jquery.js') }}"></script>#}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>#}
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -129,6 +131,19 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('js/agency.js') }}"></script>
 
+    <!-- Leaflet -->
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="http://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
+    <script src="http://matchingnotes.com/javascripts/leaflet-google.js"></script>
+    <script type="text/javascript" src="{{ asset('js/Google.js') }}"></script>
+
+    <!-- highcharts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
     <!-- The data -->
     <script src="{{ asset('js/city.js') }}"></script>
+    <script src="{{ asset('js/map.js') }}"></script>
+    <script src="{{ asset('js/spider.js') }}"></script>
 {% endblock %}
