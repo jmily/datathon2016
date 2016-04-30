@@ -11,4 +11,108 @@ var cities = {
     "Darwin": {"lat": "-12.4628", "lng": "130.8418", "job_variety": "58", "job_popularity": "744" , "job_volume":"226"}
 };
 
+$(document).ready(function()
+{
+     //console.log(jobAttributeMark('Melbourne','popularity'));
+    function getNumberEqualsToFullMark(attrName)
+    {
+        var numberOfAttr = 0;
+        if(attrName == 'variety')
+        {
+            numberOfAttr = getNumberByAttribute('variety');
+        }
+        else if(attrName == 'popularity')
+        {
+            numberOfAttr = getNumberByAttribute('popularity');
+        }
+        else if(attrName == 'volume')
+        {
+            numberOfAttr = getNumberByAttribute('volume');
+        }
+
+        var numberOfCity = getNumberOfCity();
+
+        var points = Math.ceil(numberOfAttr/numberOfCity);
+
+        return points*2;
+    }
+
+
+    function getNumberByAttribute(attrName)
+    {
+        var numberOfAttr = 0;
+
+        $.each(cities,function(key,value)
+        {
+            if(attrName == 'variety')
+            {
+                numberOfAttr += parseInt(value.job_variety);
+            }
+            else if(attrName == 'popularity')
+            {
+                numberOfAttr += parseInt(value.job_popularity);
+            }
+            else if(attrName == 'volume')
+            {
+                numberOfAttr += parseInt(value.job_volume);
+            }
+
+        });
+
+        return numberOfAttr;
+    }
+
+
+
+    function getNumberOfCity()
+    {
+        var number = 0;
+        $.each(cities,function()
+        {
+            number++;
+        });
+
+        return number;
+    }
+
+
+    function jobAttributeMark(cityName,attrName)
+    {
+        var mark = -1;
+        var numberOfAttr = 0;
+        var assessNumber = getNumberEqualsToFullMark(attrName);
+        $.each(cities,function(key,value)
+        {
+            if(key == cityName)
+            {
+                if(attrName == 'variety')
+                {
+                    numberOfAttr = value.job_variety;
+                }
+                else if(attrName == 'popularity')
+                {
+                    numberOfAttr = value.job_popularity;
+                }
+                else if(attrName == 'volume')
+                {
+                    numberOfAttr = value.job_volume;
+                }
+            }
+        });
+
+        if(numberOfAttr >= assessNumber)
+        {
+            mark =10;
+        }
+        else
+        {
+            mark = (numberOfAttr/assessNumber).toFixed(2);
+        }
+        return mark;
+    }
+
+});
+
+
+
 
