@@ -69,11 +69,7 @@ $(document).ready(function(){
 
         // open city detail modal and update content
         $("#cityDetailModal").modal("show");
-        updateModalContent(this);
-    }
-
-    function updateModalContent(marker){
-        $("#cityDetailModalHeader").html(marker.cityName);
+        initCityDetailsModel(this.cityName);
     }
 
     function clearMarkerSelection(){

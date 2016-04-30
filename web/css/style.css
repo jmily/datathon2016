@@ -42,7 +42,7 @@ body{
     box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
 }
-.highcharts-container{
+#spider .highcharts-container{
     box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
 }
