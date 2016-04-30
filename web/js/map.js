@@ -35,9 +35,9 @@ $(document).ready(function(){
             }
         });
 
-        greenIcon = new LeafIcon({iconUrl:'../img/greenIcon.png'}),
-        redIcon = new LeafIcon({iconUrl: '../img/redIcon.png'}),
-        blueIcon = new LeafIcon({iconUrl:'../img/blueIcon.png'});
+        greenIcon = new LeafIcon({iconUrl:$('#green-icon').val()}),
+        redIcon = new LeafIcon({iconUrl: $('#red-icon').val()}),
+        blueIcon = new LeafIcon({iconUrl:$('#blue-icon').val()});
 
         createMarkersOnMap();
     }
