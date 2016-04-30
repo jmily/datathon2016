@@ -1,0 +1,27 @@
+.city-name {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+    z-index: 6;
+    background: #006872;
+    color: white;
+    padding: .5em .75em;
+    font-size: 1.2em;
+    display: block;
+    border-radius: 6px;
+    text-align: center;
+}
+.map-tooltip {
+    position: absolute;
+    padding: 6px 8px;
+    display: none;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    text-align: left;
+    line-height: 18px;
+    color: black;
+    min-width: 135px;
+}

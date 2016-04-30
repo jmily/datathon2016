@@ -6,29 +6,22 @@ $(document).ready(function(){
     var jobPopularity = [];
     var jobVolume = [];
 
-    for(var city in cities){
-        cityNames.push(city);
-        jobVariety.push(parseInt(cities[city].job_variety));
-        jobPopularity.push(parseInt(cities[city].job_popularity));
-        jobVolume.push(parseInt(cities[city].job_volume));
-    }
+    var spiderCategory = ["Job Variety", "Job Popularity", "Job Volume"];
 
     var seriesData = [];
-    seriesData.push({
-        name: 'Job Variety',
-        data: jobVariety,
-        pointPlacement: 'on'
-    });
-    seriesData.push({
-        name: 'Job Popularity',
-        data: jobPopularity,
-        pointPlacement: 'on'
-    });
-    seriesData.push({
-        name: 'Job Volume',
-        data: jobVolume,
-        pointPlacement: 'on'
-    });
+    for(var city in cities){
+
+        var dataArr = [];
+        dataArr.push(parseInt(cities[city].job_variety));
+        dataArr.push(parseInt(cities[city].job_popularity));
+        dataArr.push(parseInt(cities[city].job_volume));
+
+        seriesData.push({
+            name: city,
+            data: dataArr,
+            pointPlacement: 'on'
+        });
+    }
 
 
     $('#spider').highcharts({
@@ -54,7 +47,7 @@ $(document).ready(function(){
         },
 
         xAxis: {
-            categories: cityNames,
+            categories: spiderCategory,
             tickmarkPlacement: 'on',
             lineWidth: 0
         },
@@ -74,6 +67,7 @@ $(document).ready(function(){
             align: 'center',
             verticalAlign: 'top',
             y: 30,
+            x: 150,
             layout: 'vertical'
         },
 
