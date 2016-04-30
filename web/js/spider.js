@@ -35,7 +35,8 @@ $(document).ready(function(){
 
         chart: {
             polar: true,
-            type: 'line'
+            type: 'line',
+            marginTop: 80
         },
         exporting: {
             enabled: false
@@ -44,8 +45,8 @@ $(document).ready(function(){
             enabled: false
         },
         title: {
-            text: 'City Jobs Data',
-            x: -80
+            align: 'center',
+            text: 'City Jobs Data'
         },
 
         pane: {
@@ -72,7 +73,7 @@ $(document).ready(function(){
         legend: {
             align: 'center',
             verticalAlign: 'top',
-            y: 70,
+            y: 30,
             layout: 'vertical'
         },
 
