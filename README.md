@@ -1,4 +1,6 @@
-datathon2016
+![alt tag](http://www.jmily.net/images/datathon2016.png)
+
+
+Datathon 2016
 ============
 
-A Symfony project created on April 25, 2016, 7:42 pm.
