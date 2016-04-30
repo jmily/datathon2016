@@ -14,6 +14,12 @@ var cities = {
 $(document).ready(function()
 {
      //console.log(jobAttributeMark('Melbourne','popularity'));
+
+    /**
+     * @param attrName - variety, popularity or volume
+     * @returns {number} -  the total number of variety, popularity or volume
+     *                       which used as a number of mark 10(the full mark)
+     */
     function getNumberEqualsToFullMark(attrName)
     {
         var numberOfAttr = 0;
@@ -38,6 +44,10 @@ $(document).ready(function()
     }
 
 
+    /**
+     * @param attrName - variety, popularity or volume
+     * @returns {number} - the total number of variety, popularity or volume of all cities
+     */
     function getNumberByAttribute(attrName)
     {
         var numberOfAttr = 0;
@@ -63,7 +73,9 @@ $(document).ready(function()
     }
 
 
-
+    /**
+     * @returns {number}
+     */
     function getNumberOfCity()
     {
         var number = 0;
@@ -76,6 +88,11 @@ $(document).ready(function()
     }
 
 
+    /**
+     * @param cityName
+     * @param attrName
+     * @returns {number} -  calculate a point of a city by a attribute (variety, popularity or volume)
+     */
     function jobAttributeMark(cityName,attrName)
     {
         var mark = -1;
