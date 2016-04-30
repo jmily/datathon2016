@@ -12,9 +12,10 @@ $(document).ready(function(){
     for(var city in cities){
 
         var dataArr = [];
-        dataArr.push(parseInt(cities[city].job_variety));
-        dataArr.push(parseInt(cities[city].job_popularity));
-        dataArr.push(parseInt(cities[city].job_volume));
+
+        dataArr.push(parseFloat(jobAttributeMark(city,'variety')));
+        dataArr.push(parseFloat(jobAttributeMark(city,'popularity')));
+        dataArr.push(parseFloat(jobAttributeMark(city,'volume')));
 
         seriesData.push({
             name: city,
@@ -60,7 +61,7 @@ $(document).ready(function(){
 
         tooltip: {
             shared: true,
-            pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
+            pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.1f}</b><br/>'
         },
 
         legend: {
