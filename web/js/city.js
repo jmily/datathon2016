@@ -123,7 +123,7 @@ $(document).ready(function()
         }
         else
         {
-            mark = (numberOfAttr/assessNumber).toFixed(2);
+            mark = ((numberOfAttr/assessNumber)*10).toFixed(2);
         }
         return mark;
     }
