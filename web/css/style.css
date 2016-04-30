@@ -1,8 +1,12 @@
+body{
+    background: #eee;
+}
 .city-name {
     position: absolute;
     top: 10px;
     left: 25px;
     z-index: 6;
+    font: 14px/16px Arial, Helvetica, sans-serif;
     background: #006872;
     color: white;
     padding: .5em .75em;
@@ -24,4 +28,21 @@
     line-height: 18px;
     color: black;
     min-width: 135px;
+}
+
+#map{
+    box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+#spider{
+    box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+.leaflet-google-layer{
+    box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+.highcharts-container{
+    box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
 }

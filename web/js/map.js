@@ -1,35 +1,46 @@
 
 $(document).ready(function(){
 
-    var defaultCityDivText = "Click marker to <br> view City detail";
-    $(".city-name").html(defaultCityDivText);
+    var map, greenIcon, redIcon, blueIcon;
+    var defaultCityDivText = "Hit the marker !";
 
-    var map = L.map('map', {zoomControl: false, attributionControl:false, maxZoom:10}).setView([-27.3598147,133.5668867], 4);
-    map.scrollWheelZoom.disable();
-    map.on('click', onMapClick);
-    new L.Control.Zoom({position: 'topright'}).addTo(map);
+    initMap();
+    initMarker();
 
-    var googleRoadMap = new L.Google('ROADMAP');
-    map.addLayer(googleRoadMap);
 
-    var googleSatellite = new L.Google('SATELLITE');
-    map.addControl(new L.Control.Layers( {'Google RoadMap':googleRoadMap, 'Google Satellite':googleSatellite}, {}));
+    function initMap(){
 
-    var iconSizeX = 32,
-        iconSizeY = 32;
-    var LeafIcon = L.Icon.extend({
-        options: {
-            iconSize: [iconSizeX,iconSizeY],
-            iconAnchor: [16,32],
-            popupAnchor: [32,-2]
-        }
-    });
+        $(".city-name").html(defaultCityDivText);
 
-    var greenIcon = new LeafIcon({iconUrl:'../img/greenIcon.png'}),
+        map = L.map('map', {zoomControl: false, attributionControl:false, maxZoom:10}).setView([-27.3598147,133.5668867], 4);
+        map.scrollWheelZoom.disable();
+        map.on('click', onMapClick);
+        new L.Control.Zoom({position: 'topright'}).addTo(map);
+
+        var googleRoadMap = new L.Google('ROADMAP');
+        map.addLayer(googleRoadMap);
+
+        var googleSatellite = new L.Google('SATELLITE');
+        map.addControl(new L.Control.Layers( {'Google RoadMap':googleRoadMap, 'Google Satellite':googleSatellite}, {}));
+    }
+
+    function initMarker(){
+        var iconSizeX = 32,
+            iconSizeY = 32;
+        var LeafIcon = L.Icon.extend({
+            options: {
+                iconSize: [iconSizeX,iconSizeY],
+                iconAnchor: [16,32],
+                popupAnchor: [32,-2]
+            }
+        });
+
+        greenIcon = new LeafIcon({iconUrl:'../img/greenIcon.png'}),
         redIcon = new LeafIcon({iconUrl: '../img/redIcon.png'}),
         blueIcon = new LeafIcon({iconUrl:'../img/blueIcon.png'});
 
-    createMarkersOnMap();
+        createMarkersOnMap();
+    }
 
     function createMarkersOnMap(){
         for(var city in cities){
@@ -46,6 +57,33 @@ $(document).ready(function(){
     function onMapClick(){
         clearMarkerSelection();
         $(".city-name").html(defaultCityDivText);
+    }
+
+    function onMarkerClick(){
+        // change marker icons
+        clearMarkerSelection();
+        this.setIcon(redIcon);
+
+        // set city name on top left
+        $(".city-name").html(this.cityName);
+
+        // open city detail modal and update content
+        $("#cityDetailModal").modal("show");
+        updateModalContent(this);
+    }
+
+    function updateModalContent(marker){
+        $("#cityDetailModalHeader").html(marker.cityName);
+    }
+
+    function clearMarkerSelection(){
+        var i=0;
+        $.each(map._layers, function () {
+            if(i != 0){
+                this.setIcon(blueIcon);
+            }
+            i++;
+        });
     }
 
     function onMarkerMouseover(e){
@@ -67,20 +105,5 @@ $(document).ready(function(){
         $("#map-tooltip").attr("style","margin-top:"+y+"px;margin-left:"+x+"px;z-index:1000;");
     }
 
-    function onMarkerClick(){
-        clearMarkerSelection();
-        this.setIcon(redIcon);
-        $(".city-name").html(this.cityName);
-    }
-
-    function clearMarkerSelection(){
-        var i=0;
-        $.each(map._layers, function () {
-            if(i != 0){
-                this.setIcon(blueIcon);
-            }
-            i++;
-        });
-    }
 });
 
