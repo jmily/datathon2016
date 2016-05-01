@@ -65,7 +65,7 @@ function initCityDetailLeftPie(cityDataSouce, cityName){
         });
     }
     var pieData = [{
-        name: 'Job number within total',
+        name: 'Job number/total',
         colorByPoint: true,
         data: dataArr
     }];
