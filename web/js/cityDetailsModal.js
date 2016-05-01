@@ -11,6 +11,7 @@ function initCityDetailsModel(cityName){
 }
 
 function initCityDetailTopContent(cityName){
+
     $(".cityDetailList").click(function(){
         $(".cityDetailList").removeClass("active");
         $(this).addClass("active");
@@ -23,6 +24,8 @@ function initCityDetailTopContent(cityName){
             initCityDetailLeftPie(topJobClassification, cityName);
         }
     });
+
+    $(".cityDetailList:first").trigger("click");
 }
 
 function initCityDetailRightSpider(cityName){
