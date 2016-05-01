@@ -54,7 +54,7 @@ body{
     margin-bottom: 0;
     margin-left:-5px;
     margin-right: 0;
-    width: 33.3%;
+    width: 50%;
 }
 .list-group-horizontal .list-group-item:first-child {
     border-top-right-radius:0;

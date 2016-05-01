@@ -17,11 +17,9 @@ function initCityDetailTopContent(cityName){
         $(this).addClass("active");
 
         if($(this).index() == 0){
-            initCityDetailLeftPie(topJobClassification, cityName);
+            initCityDetailLeftPie(topJobClassification, cityName, "Top 5 job types and volume");
         }else if($(this).index() == 1){
-            initCityDetailLeftPie(topJobClassification, cityName);
-        }else{
-            initCityDetailLeftPie(topJobClassification, cityName);
+            initCityDetailLeftPie(topJobClassificationClicks, cityName, "Top 5 job types and popularity");
         }
     });
 
@@ -48,7 +46,7 @@ function initCityDetailRightSpider(cityName){
 
 }
 
-function initCityDetailLeftPie(cityDataSouce, cityName){
+function initCityDetailLeftPie(cityDataSouce, cityName, chartTitle){
     var cityDetailData = cityDataSouce[cityName];
     var totalNum = parseInt(cityDetailData["Total"]);
     var dataArr = [];
@@ -70,7 +68,7 @@ function initCityDetailLeftPie(cityDataSouce, cityName){
         data: dataArr
     }];
 
-    createPieChart(cityName, "Job Top 5", pieData);
+    createPieChart(cityName, chartTitle, pieData);
 }
 
 function createSpider(cityName, spiderCategory, seriesData){
