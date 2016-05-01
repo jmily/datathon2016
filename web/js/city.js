@@ -26,3 +26,18 @@ var topJobClassification = {
     "Darwin": {"Government - Local":"18","Couriers, Drivers & Postal Services":"10","Bar & Beverage Staff":"9","Management - Department/Assistant":"8","Aged & Disability Support":"8","Total":"151"}
 };
 
+
+
+var topJobClassificationClicks = {
+    "Melbourne": {"Administrative Assistants":"157","Government - State":"141","Pickers & Packers":"99","Assembly & Process Work":"94","Retail Assistants":"83","Total":"1869"},
+    "Sydney": {"Government - State":"211","Administrative Assistants":"90","Retail Assistants":"73","Couriers, Drivers & Postal Services":"47","Customer Service - Call Centre":"44","Total":"1869"},
+    "Brisbane": {"Government - State":"483", "Bar & Beverage Staff":"116","Couriers, Drivers & Postal Services":"88","Administrative Assistants":"80","Retail Assistants":"56","Total":"1960"},
+    "Perth": {"Government - State":"116","Couriers, Drivers & Postal Services":"95","Bar & Beverage Staff":"94","Administrative Assistants":"72","Total":"1624"},
+    "Adelaide": {"Government - State":"120","Administrative Assistants":"66","Assembly & Process Work":"56","Aged & Disability Support":"52","Bar & Beverage Staff":"40","Total":"1054"},
+    "Canberra": {"Couriers, Drivers & Postal Services":"21","Government - State":"17","Government - Federal":"17","Management - Store":"14","Management - Universities":"13","Total":"232"},
+    "Newcastle": {"Government - State":"101","Administrative Assistants":"26","Aged & Disability Support":"19","Customer Service - Call Centre":"15","Claims":"13","Total":"401"},
+    "Tasmania":{"Government - State":"75","Administrative Assistants":"20","Government - Local":"10","Management - Universities":"9","Couriers, Drivers & Postal Services":"8","Total":"243"},
+    "Darwin":{"Government - Local":"40","Aged & Disability Support":"20","Couriers, Drivers & Postal Services":"15","Bar & Beverage Staff":"13","Management - Department/Assistant":"10","Total":"281"}
+};
+
+
