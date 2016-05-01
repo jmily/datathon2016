@@ -5,18 +5,23 @@
 function initCityDetailsModel(cityName){
     $("#cityDetailModalHeader").html(cityName);
 
-    initCityDetailLeftContent(cityName);
+    initCityDetailTopContent(cityName);
     initCityDetailRightSpider(cityName);
+    initCityDetailLeftPie(topJobClassification, cityName);
 }
 
-function initCityDetailLeftContent(cityName){
-    $("#cityDetailVarScore").html(jobAttributeMark(cityName,'variety'));
-    $("#cityDetailPopScore").html(jobAttributeMark(cityName,'popularity'));
-    $("#cityDetailVolScore").html(jobAttributeMark(cityName,'volume'));
-
+function initCityDetailTopContent(cityName){
     $(".cityDetailList").click(function(){
         $(".cityDetailList").removeClass("active");
         $(this).addClass("active");
+
+        if($(this).index() == 0){
+            initCityDetailLeftPie(topJobClassification, cityName);
+        }else if($(this).index() == 1){
+            initCityDetailLeftPie(topJobClassification, cityName);
+        }else{
+            initCityDetailLeftPie(topJobClassification, cityName);
+        }
     });
 }
 
@@ -38,6 +43,31 @@ function initCityDetailRightSpider(cityName){
     }];
     createSpider(cityName, spiderCategory, seriesData);
 
+}
+
+function initCityDetailLeftPie(cityDataSouce, cityName){
+    var cityDetailData = cityDataSouce[cityName];
+    var totalNum = parseInt(cityDetailData["Total"]);
+    var dataArr = [];
+
+    for(var attr in cityDetailData){
+        if(attr == "Total"){
+            continue;
+        }
+        var num = parseInt(cityDetailData[attr]);
+        dataArr.push({
+            name: attr,
+            y: num,
+            showVal: num + "/" + totalNum
+        });
+    }
+    var pieData = [{
+        name: 'Job number within total',
+        colorByPoint: true,
+        data: dataArr
+    }];
+
+    createPieChart(cityName, "Job Top 5", pieData);
 }
 
 function createSpider(cityName, spiderCategory, seriesData){
@@ -93,4 +123,39 @@ function createSpider(cityName, spiderCategory, seriesData){
 
     });
 
+}
+
+function createPieChart(cityName, category, pieData){
+    $('#cityDetailModalDonut').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie',
+            width: 400
+        },
+        exporting: {
+            enabled: false
+        },
+        credits: {
+            enabled: false
+        },
+        title: {
+            text: cityName + " " + category
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.showVal}</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: pieData
+    });
 }
