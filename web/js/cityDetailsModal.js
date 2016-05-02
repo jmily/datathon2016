@@ -6,8 +6,7 @@ function initCityDetailsModel(cityName){
     $("#cityDetailModalHeader").html(cityName);
 
     initCityDetailTopContent(cityName);
-    initCityDetailRightSpider(cityName);
-    initCityDetailLeftPie(topJobClassification, cityName);
+    initCityDetailLeftSpider(cityName);
 }
 
 function initCityDetailTopContent(cityName){
@@ -15,18 +14,17 @@ function initCityDetailTopContent(cityName){
     $(".cityDetailList").click(function(){
         $(".cityDetailList").removeClass("active");
         $(this).addClass("active");
-
         if($(this).index() == 0){
-            initCityDetailLeftPie(topJobClassification, cityName, "Top 5 job types and volume");
+            initCityDetailRightPie(topJobClassification, cityName, "Top 5 job variety and volume");
         }else if($(this).index() == 1){
-            initCityDetailLeftPie(topJobClassificationClicks, cityName, "Top 5 job types and popularity");
+            initCityDetailRightPie(topJobClassificationClicks, cityName, "Top 5 job variety and popularity");
         }
     });
 
     $(".cityDetailList:first").trigger("click");
 }
 
-function initCityDetailRightSpider(cityName){
+function initCityDetailLeftSpider(cityName){
     var cityDetailRightSpiderHTML = "";
 
     var spiderCategory = ["Job Variety", "Job Popularity", "Job Volume"];
@@ -46,7 +44,7 @@ function initCityDetailRightSpider(cityName){
 
 }
 
-function initCityDetailLeftPie(cityDataSouce, cityName, chartTitle){
+function initCityDetailRightPie(cityDataSouce, cityName, chartTitle){
     var cityDetailData = cityDataSouce[cityName];
     var totalNum = parseInt(cityDetailData["Total"]);
     var dataArr = [];
@@ -126,7 +124,7 @@ function createSpider(cityName, spiderCategory, seriesData){
 
 }
 
-function createPieChart(cityName, category, pieData){
+function createPieChart(cityName, chartTitle, pieData){
     $('#cityDetailModalDonut').highcharts({
         chart: {
             plotBackgroundColor: null,
@@ -142,7 +140,7 @@ function createPieChart(cityName, category, pieData){
             enabled: false
         },
         title: {
-            text: cityName + " " + category
+            text: cityName + " " + chartTitle
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.showVal}</b>'
